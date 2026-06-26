@@ -16,7 +16,7 @@
          Change these to retheme the whole site.
          ============================================= */
       :root {
-        --bg:          #F7F6F2;   /* warm off-white, like a good notebook page */
+        --bg:          #FDF8EE;   /* warm off-white, like a good notebook page */
         --ink:         #1C1C1C;   /* near-black for body text */
         --ink-light:   #6B6B6B;   /* muted gray for labels, nav, captions */
         --accent:      #5B7FA6;   /* dusty slate blue — links, hover states */
@@ -264,7 +264,12 @@
          MOBILE
          ============================================= */
       @media (max-width: 600px) {
-        nav { flex-wrap: wrap; gap: 1rem; }
+        nav { flex-wrap: wrap; gap: 0.75rem; justify-content: center; }
+        .site-name {
+            width: 100%;
+            text-align: center;
+            margin-right: 0;
+        }
         .sidequests { grid-template-columns: 1fr; }
         .form-row { flex-direction: column; }
         input[type="email"],
