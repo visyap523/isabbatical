@@ -4,9 +4,424 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>isabbatical</title>
+
+    <!-- Google Fonts: Lora (serif, for headings + intro) + DM Sans (for nav, body, labels) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+
+    <style>
+      /* =============================================
+         DESIGN TOKENS
+         Change these to retheme the whole site.
+         ============================================= */
+      :root {
+        --bg:          #F7F6F2;   /* warm off-white, like a good notebook page */
+        --ink:         #1C1C1C;   /* near-black for body text */
+        --ink-light:   #6B6B6B;   /* muted gray for labels, nav, captions */
+        --accent:      #5B7FA6;   /* dusty slate blue — links, hover states */
+        --border:      #E0DED8;   /* subtle divider lines */
+        --max-width:   680px;     /* single-column reading width */
+        --font-serif:  'Lora', Georgia, serif;
+        --font-sans:   'DM Sans', system-ui, sans-serif;
+      }
+
+      /* =============================================
+         RESET
+         ============================================= */
+      *, *::before, *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* =============================================
+         BASE
+         ============================================= */
+      html { font-size: 18px; }
+
+      body {
+        background: var(--bg);
+        color: var(--ink);
+        font-family: var(--font-sans);
+        line-height: 1.7;
+        padding: 0 1.5rem;
+      }
+
+      /* =============================================
+         LAYOUT
+         ============================================= */
+      .container {
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 3rem 0 6rem;
+      }
+
+      /* =============================================
+         NAVIGATION
+         ============================================= */
+      nav {
+        display: flex;
+        align-items: baseline;
+        gap: 1.5rem;
+        margin-bottom: 4rem;
+        font-size: 0.8rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        font-weight: 500;
+        font-family: var(--font-sans);
+      }
+
+      .site-name {
+        font-family: var(--font-serif);
+        font-size: 1rem;
+        font-weight: 400;
+        font-style: italic;
+        letter-spacing: 0.02em;
+        text-transform: none;
+        color: var(--ink);
+        margin-right: auto;          /* pushes nav links to the right */
+        text-decoration: none;
+      }
+
+      nav a {
+        color: var(--ink-light);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+
+      nav a:hover { color: var(--accent); }
+
+      /* =============================================
+         ILLUSTRATED ACCENT SLOT
+         Replace the comment below in the HTML with:
+         <img src="YOUR_CLOUDINARY_URL" alt="a small illustrated pigeon" class="accent-img" />
+         ============================================= */
+      .accent-img {
+        display: block;
+        width: 72px;
+        margin-bottom: 2rem;
+        opacity: 0.85;
+      }
+
+      /* =============================================
+         INTRO
+         ============================================= */
+      .intro {
+        margin-bottom: 3.5rem;
+      }
+
+      .intro p {
+        font-family: var(--font-serif);
+        font-size: 1.2rem;
+        line-height: 1.8;
+        color: var(--ink);
+        margin-bottom: 1rem;
+      }
+
+      .intro .cue {
+        font-family: var(--font-sans);
+        font-size: 0.85rem;
+        color: var(--ink-light);
+        letter-spacing: 0.02em;
+      }
+
+      /* =============================================
+         SECTIONS
+         ============================================= */
+      section {
+        margin-bottom: 3rem;
+        padding-top: 2.5rem;
+        border-top: 1px solid var(--border);
+      }
+
+      section h2 {
+        font-family: var(--font-sans);
+        font-size: 0.75rem;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--ink-light);
+        margin-bottom: 1rem;
+      }
+
+      section p {
+        font-size: 0.95rem;
+        color: var(--ink);
+        margin-bottom: 0.75rem;
+      }
+
+      section a {
+        color: var(--accent);
+        text-decoration: underline;
+        text-decoration-color: transparent;
+        text-underline-offset: 3px;
+        transition: text-decoration-color 0.2s;
+      }
+
+      section a:hover {
+        text-decoration-color: var(--accent);
+      }
+
+      /* =============================================
+         SIDEQUESTS LIST
+         ============================================= */
+      .sidequests {
+        list-style: none;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.4rem 2rem;
+        margin-top: 0.75rem;
+      }
+
+      .sidequests li {
+        font-size: 0.9rem;
+        color: var(--ink);
+        padding: 0.2rem 0;
+      }
+
+      .sidequests li::before {
+        content: '→ ';
+        color: var(--ink-light);
+        font-size: 0.75rem;
+      }
+
+      /* =============================================
+         FORMS (newsletter + contact)
+         ============================================= */
+      form {
+        margin-top: 1rem;
+      }
+
+      .form-row {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+        margin-bottom: 0.75rem;
+      }
+
+      input[type="email"],
+      input[type="text"],
+      textarea {
+        font-family: var(--font-sans);
+        font-size: 0.9rem;
+        background: white;
+        border: 1px solid var(--border);
+        color: var(--ink);
+        padding: 0.6rem 0.9rem;
+        border-radius: 2px;
+        flex: 1;
+        min-width: 180px;
+        transition: border-color 0.2s;
+      }
+
+      input[type="email"]:focus,
+      input[type="text"]:focus,
+      textarea:focus {
+        outline: none;
+        border-color: var(--accent);
+      }
+
+      textarea {
+        min-height: 120px;
+        resize: vertical;
+        width: 100%;
+      }
+
+      button[type="submit"] {
+        font-family: var(--font-sans);
+        font-size: 0.8rem;
+        font-weight: 500;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        background: var(--ink);
+        color: var(--bg);
+        border: none;
+        padding: 0.65rem 1.4rem;
+        cursor: pointer;
+        border-radius: 2px;
+        transition: background 0.2s;
+        white-space: nowrap;
+      }
+
+      button[type="submit"]:hover {
+        background: var(--accent);
+      }
+
+      /* =============================================
+         FOOTER
+         ============================================= */
+      footer {
+        border-top: 1px solid var(--border);
+        padding-top: 1.5rem;
+        margin-top: 2rem;
+        font-size: 0.8rem;
+        color: var(--ink-light);
+        font-family: var(--font-sans);
+      }
+
+      /* =============================================
+         MOBILE
+         ============================================= */
+      @media (max-width: 600px) {
+        nav { flex-wrap: wrap; gap: 1rem; }
+        .sidequests { grid-template-columns: 1fr; }
+        .form-row { flex-direction: column; }
+        input[type="email"],
+        input[type="text"] { min-width: 0; }
+      }
+    </style>
   </head>
+
   <body>
-    <h1>isabbatical</h1>
-    <p>Coming soon.</p>
+    <div class="container">
+
+      <!-- =============================================
+           NAVIGATION
+           Add new pages here as you build them.
+           ============================================= -->
+      <nav>
+        <a href="/" class="site-name">isabbatical</a>
+        <a href="#">about</a>
+        <a href="#">essays</a>
+        <a href="https://isabelyap.com" target="_blank">fiction</a>
+        <a href="#">sidequests</a>
+      </nav>
+
+      <!-- =============================================
+           ILLUSTRATED ACCENT
+           When your pigeon/blob-boy art is ready,
+           upload to Cloudinary and replace this comment with:
+           <img src="YOUR_CLOUDINARY_URL" alt="an illustrated pigeon" class="accent-img" />
+           ============================================= -->
+
+      <!-- =============================================
+           INTRO
+           ============================================= -->
+      <div class="intro">
+        <p>
+          Hi! I'm Isa. I'm a Product Manager and speculative fiction author
+          currently on sabbatical. I'm documenting my sabbatical projects in this portfolio
+          to teach myself how to use new tools (and get more comfy building in public).
+        </p>
+        <p class="cue">Learn more below ↓</p>
+      </div>
+
+      <!-- =============================================
+           ABOUT ME
+           ============================================= -->
+      <section>
+        <h2>About me</h2>
+        <p>
+          I'm a <a href="https://www.linkedin.com/in/victoriaisabelyap/"></a>Lead PM</a> with a background working on fullstack teams across web and mobile.
+          Most recently I was at Klaviyo for 4.5+ years, working primarily on the data platform/infrastructure side.
+          I'm using this sabbatical to better understand the current tech landscape, and figure out where and what I want to build next.
+          My favorite part of being a PM is building valuable products with cool people.
+          </p>
+        <p>
+          I'm also a published author of sci-fi, fantasy, and horror. My author site lives at
+          <a href="https://isabelyap.com" target="_blank">isabelyap.com</a>, 
+          and you can buy my book <a href="https://isabelyap.com/never-have-i-ever">here</a>, 
+          or at the retailer of your choice.
+        </p>
+        <p>
+          I am currently based in New York City.
+        </p>
+      </section>
+
+      <!-- =============================================
+           WRITING: ESSAYS
+           Future: add links to individual essays here.
+           ============================================= -->
+      <section>
+        <h2>Writing: essays &amp; notes</h2>
+        <p>
+          Occasional thoughts on what I'm learning, where I'm walking,
+          and where my brain goes when faced with the abyss. More coming soon.
+        </p>
+      </section>
+
+      <!-- =============================================
+           WRITING: FICTION
+           ============================================= -->
+      <section>
+        <h2>Writing: fiction</h2>
+        <p>
+          I write sci-fi and fantasy short fiction. My published work,
+          forthcoming stories, and author newsletter live at
+          <a href="https://isabelyap.com" target="_blank">isabelyap.com</a>.
+        </p>
+      </section>
+
+      <!-- =============================================
+           SABBATICAL SIDEQUESTS
+           Add or remove list items freely.
+           ============================================= -->
+      <section>
+        <h2>Sabbatical Sidequests</h2>
+        <p>Things I'm working on/learning/exploring this year:</p>
+        <ul class="sidequests">
+          <li>Shikoku Henro</li>
+          <li>New York</li>
+          <li>Protein</li>
+          <li>Head vs chest voice</li>
+          <li>DDIA (the jumping boar data platform book)</li>
+        </ul>
+      </section>
+
+      <!-- =============================================
+           NEWSLETTER
+           Netlify Forms handles this automatically —
+           no backend needed. Responses appear in your
+           Netlify dashboard under Forms.
+           ============================================= -->
+      <section>
+        <h2>Stay in touch</h2>
+        <p>
+          I'm thinking of sending an infrequent newsletter of sabbatical
+          updates (like, every 2-3 weeks). If that sounds appealing, sign up here:
+        </p>
+        <form name="newsletter" method="POST" netlify>
+          <input type="hidden" name="form-name" value="newsletter" />
+          <div class="form-row">
+            <input
+              type="email"
+              name="email"
+              placeholder="your@email.com"
+              required
+            />
+            <button type="submit">Sign up</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- =============================================
+           CONTACT
+           Same deal — Netlify Forms, responses in dashboard.
+           ============================================= -->
+      <section>
+        <h2>Say hello</h2>
+        <p>Want to chat about any of the above? Send me a note.</p>
+        <form name="contact" method="POST" netlify>
+          <input type="hidden" name="form-name" value="contact" />
+          <div class="form-row">
+            <input type="text"  name="name"    placeholder="Your name"        required />
+            <input type="email" name="email"   placeholder="your@email.com"   required />
+          </div>
+          <div class="form-row">
+            <textarea           name="message" placeholder="What's on your mind?" required></textarea>
+          </div>
+          <button type="submit">Send</button>
+        </form>
+      </section>
+
+      <!-- =============================================
+           FOOTER
+           ============================================= -->
+      <footer>
+        <p>© 2026 Isabel Yap · built on sabbatical</p>
+      </footer>
+
+    </div>
   </body>
 </html>
