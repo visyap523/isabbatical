@@ -7,6 +7,7 @@
 - Replaced Netlify Forms with Web3Forms
 - Built essays.html skeleton with tag filter bar
 - Built individual essay template
+- Added Sidequests placeholder
 
 ## June 26, 2026
 - First deploy — isabbatical.netlify.app live (set up Terminal and VS Code)
