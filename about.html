@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>about — isabbatical</title>
+
+    <meta property="og:title" content="About Isa — isabbatical" />
+    <meta property="og:url" content="https://isabbatical.net/about.html" />
+    <meta property="og:type" content="website" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+
+    <style>
+      /* =============================================
+         DESIGN TOKENS — keep identical to index.html
+         ============================================= */
+      :root {
+        --bg:          #F7F6F2;
+        --ink:         #1C1C1C;
+        --ink-light:   #6B6B6B;
+        --accent:      #5B7FA6;
+        --border:      #E0DED8;
+        --max-width:   680px;
+        --font-serif:  'Lora', Georgia, serif;
+        --font-sans:   'DM Sans', system-ui, sans-serif;
+      }
+
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+      html { font-size: 18px; }
+
+      body {
+        background: var(--bg);
+        color: var(--ink);
+        font-family: var(--font-sans);
+        line-height: 1.7;
+        padding: 0 1.5rem;
+      }
+
+      .container {
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 3rem 0 6rem;
+      }
+
+      /* =============================================
+         NAVIGATION
+         ============================================= */
+      nav {
+        display: flex;
+        align-items: baseline;
+        gap: 1.5rem;
+        margin-bottom: 4rem;
+        font-size: 0.8rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        font-weight: 500;
+        font-family: var(--font-sans);
+      }
+
+      .site-name {
+        font-family: var(--font-serif);
+        font-size: 1rem;
+        font-weight: 600;
+        font-style: italic;
+        letter-spacing: 0.02em;
+        text-transform: none;
+        color: var(--ink);
+        margin-right: auto;
+        text-decoration: none;
+      }
+
+      nav a {
+        color: var(--ink-light);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+
+      nav a:hover { color: var(--accent); }
+
+      /* Current page indicator */
+      nav a.current {
+        color: var(--ink);
+      }
+
+      /* =============================================
+         PROFILE PHOTO
+         Cloudinary URL includes w_200,h_200,c_fill,g_face
+         which auto-crops to face and resizes efficiently.
+         ============================================= */
+      .profile-photo {
+        display: block;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 2rem;
+      }
+
+      /* =============================================
+         PAGE HEADER
+         ============================================= */
+      .page-header {
+        margin-bottom: 3rem;
+      }
+
+      .page-header h1 {
+        font-family: var(--font-serif);
+        font-size: 1.75rem;
+        font-weight: 600;
+        line-height: 1.3;
+        color: var(--ink);
+        margin-bottom: 0;
+      }
+
+      /* =============================================
+         SECTIONS
+         ============================================= */
+      section {
+        margin-bottom: 3rem;
+        padding-top: 2.5rem;
+        border-top: 1px solid var(--border);
+      }
+
+      section h2 {
+        font-family: var(--font-sans);
+        font-size: 0.75rem;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--ink-light);
+        margin-bottom: 1.25rem;
+      }
+
+      section p {
+        font-size: 0.95rem;
+        color: var(--ink);
+        margin-bottom: 0.85rem;
+      }
+
+      section p:last-child {
+        margin-bottom: 0;
+      }
+
+      section a {
+        color: var(--accent);
+        text-decoration: underline;
+        text-decoration-color: transparent;
+        text-underline-offset: 3px;
+        transition: text-decoration-color 0.2s;
+      }
+
+      section a:hover {
+        text-decoration-color: var(--accent);
+      }
+
+      /* =============================================
+         LISTS
+         ============================================= */
+      .about-list {
+        list-style: none;
+        margin: 0.5rem 0 0.85rem 0;
+      }
+
+      .about-list li {
+        font-size: 0.95rem;
+        color: var(--ink);
+        padding: 0.2rem 0;
+        padding-left: 1.25rem;
+        position: relative;
+      }
+
+      .about-list li::before {
+        content: '›';
+        position: absolute;
+        left: 0;
+        color: var(--ink-light);
+        font-size: 0.9rem;
+      }
+
+      /* Nested lists */
+      .about-list .about-list {
+        margin-top: 0.25rem;
+        margin-left: 0.5rem;
+      }
+
+      .about-list .about-list li::before {
+        content: '–';
+        font-size: 0.8rem;
+      }
+
+      /* =============================================
+         BOLD + ITALIC within content
+         ============================================= */
+      strong {
+        font-weight: 500;
+        color: var(--ink);
+      }
+
+      em {
+        font-style: italic;
+      }
+
+      /* =============================================
+         FOOTER
+         ============================================= */
+      footer {
+        border-top: 1px solid var(--border);
+        padding-top: 1.5rem;
+        margin-top: 2rem;
+        font-size: 0.8rem;
+        color: var(--ink-light);
+        font-family: var(--font-sans);
+      }
+
+      footer a {
+        color: var(--ink-light);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+
+      footer a:hover { color: var(--accent); }
+
+      .footer-note {
+        margin-top: 0.5rem;
+        font-size: 0.75rem;
+        color: var(--ink-light);
+        line-height: 1.6;
+      }
+
+      /* =============================================
+         MOBILE
+         ============================================= */
+      @media (max-width: 600px) {
+        nav {
+          flex-wrap: wrap;
+          gap: 0.75rem;
+          justify-content: center;
+        }
+        .site-name {
+          width: 100%;
+          text-align: center;
+          margin-right: 0;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+
+      <!-- NAVIGATION -->
+      <nav>
+        <a href="/" class="site-name">isabbatical</a>
+        <a href="/about.html" class="current">about</a>
+        <a href="/essays.html">essays</a>
+        <a href="/sidequests.html">sidequests</a>
+      </nav>
+
+      <!-- PAGE HEADER + PHOTO -->
+      <header class="page-header">
+        <!-- Cloudinary URL uses w_200,h_200,c_fill,g_face to auto-crop to your face -->
+        <img
+          src="https://res.cloudinary.com/dl1tx7ln5/image/upload/w_200,h_200,c_fill,g_face/v1783706121/2024-small-headshot_copy_nxwlpa.jpg"
+          alt="Isabel Yap"
+          class="profile-photo"
+        />
+        <h1>About Me</h1>
+      </header>
+
+      <!-- =============================================
+           TECH CAREER
+           ============================================= -->
+      <section>
+        <h2>Tech Career</h2>
+
+        <p>Since you wanted more, you get the long version.</p>
+
+        <p>I've worked in the tech industry since 2012.</p>
+
+        <p>My first corporate job was a product internship at the mobile gaming company GREE. I worked a game called Dino Life and learned gamification tactics (people will pay a lot for a rainbow stegosaurus).</p>
+
+        <p>Post-college I joined Guidebook (no-code mobile apps for events) as employee #26. I launched our higher-ed vertical, then our London-based EMEA operations, as a Customer Success associate. Then I originated the Product Marketing function, working on sales enablement and strategy, before shifting into Product Management.</p>
+
+        <p>I was at Guidebook for 4.5+ years, and I consider that where I "grew up" in tech: a truly scrappy environment, in the rose-tinted 2010s sense of that word. Late nights with Thai food, flipcup at office parties, calling up the CTO when our site crashed, soul-crushing product rollouts, heroic acts of service from beloved teammates, and learning every function from scratch.</p>
+
+        <p>I burnt out and applied to business school. Because I was in SF, a lot of people told me an MBA was useless. I was also sheepish because I knew it would make me Jared from Silicon Valley, but I <em>did</em> ultimately want it, for three reasons:</p>
+
+        <ul class="about-list">
+          <li>To get better at business strategy. Like, I legitimately wanted to learn more about the nuts and bolts of business and break down how companies <em>work</em>.</li>
+          <li>To effectively hold my own against executives and founders. Despite working closely with C-suite, I sometimes tended towards deference in decisions and conversations. I wanted to fix that.</li>
+          <li>To meet people outside of the Silicon Valley Bubble.</li>
+        </ul>
+
+        <p>I got rejected. I tried again a year later, and was accepted into Harvard Business School for fall 2018. HBS was great. I had a better time than expected. If you want to know more about my experience there, <a href="#" title="Add essay URL here">here's an essay on why I chose an MBA over an MFA in Creative Writing</a>.</p>
+
+        <p>In summer 2019 I interned at Duolingo in Pittsburgh, where I worked on Monetization, specifically the question: "Why do people upgrade to Plus?" One of my features (Hard Mode) drove +$2.5k in daily revenue during the experiment phase. I enjoyed Duo's design-forward, experiment-driven culture, and applying the knowledge from my mobile game days.</p>
+
+        <p>In 2020 I joined the seed-stage start-up Thrilling (Etsy but for vintage clothing, which was crucial during covid). I was the third technical hire, after our CTO and one fullstack dev. I'd describe my role there as 50% Product, 50% Operations/whatever the CEO needed. This involved maturing our tech stack (implementing Zoom, Lever, Intercom, analytics, etc), and hiring. (A <em>lot</em> of hiring.) It was eye-opening to be part of the Series A fundraise, and to build a team from scratch. But part of me really wanted to join a later-stage org, and see how I'd fare in that environment.</p>
+
+        <p>In 2021 I joined Klaviyo's Data Infrastructure team, working on Profiles and Segmentation. My primary focus was on improving our segment builder. Over time, my team and I converted the UI to React/our design system; added in segment preview, cloning, additional operators, support for multiple where clauses; and fully upgraded the underlying infrastructure, drastically improving speed for our largest accounts, and decreasing overall costs.</p>
+
+        <p>I also worked on AI/ML features, launching our RFM segments and dashboard, before expanding my coverage in Data Infra. In the last 2 years I worked across the Data Platform (Data Warehouse/Data Lake/Online Analytics), supporting infra teams with a focus on enabling flexible queries for analytics features.</p>
+
+        <p>Klaviyo was the first place where I worked on teams that were entirely backend-focused. It was fun and fulfilling to drive technical decision making for foundational parts of our app, and collaborate closely with our (mostly internal!) customers. There's more I want to learn in this area, so I'm spending part of my sabbatical studying how data-intensive applications are made.</p>
+      </section>
+
+      <!-- =============================================
+           ME AS A PRODUCT MANAGER
+           ============================================= -->
+      <section>
+        <h2>Me as a Product Manager</h2>
+
+        <p>I believe the core of the PM role boils down to the following:</p>
+
+        <ul class="about-list">
+          <li>Deeply understand your customers, their problems, and what makes them happy.</li>
+          <li>Unblock your teams, so they can solve customer problems as effectively as possible within your context (limited resources, company politics, etc).</li>
+        </ul>
+
+        <p>A lot of the value I add as a PM focuses on those two areas. I'm happiest when I'm building actual solutions. There are periods when the job becomes <em>mostly</em> management/comms—and I can <em>do</em> it, but I get kinda grumpy if it goes on too long.</p>
+
+        <p>Where I spike as a PM:</p>
+
+        <ul class="about-list">
+          <li>Customer research and interactions. I use my Customer Success/Product Marketing background heavily. I'm great at running my own interviews and drawing insights to inform things like ICP, product decisions, and roadmaps.</li>
+          <li>Communication. I'm comfortable presenting, and can talk across functions, roles, levels.</li>
+          <li>Documentation. I take a lot of pride in my note-taking (yes, even in our AI world), and writing stuff down so that work doesn't slip through the cracks, and decisions don't shift between meetings.</li>
+          <li>Collaborating with engineering. You will not need to argue with me on the importance of paying down technical debt or refactoring key components. I too want to build stable, functional products, with codebases you're happy to work in. I too want thoughtful rollouts and the ability to iterate. My favorite dev/PM working relationships are built on mutual trust where we seek the best solution, together.</li>
+          <li>Design. I care about the details. I care about how things <em>look.</em> I love the design and iteration process.</li>
+          <li>Figuring out whatever's needed to get things done.</li>
+        </ul>
+      </section>
+
+      <!-- =============================================
+           ARE YOU LOOKING FOR A JOB?
+           ============================================= -->
+      <section>
+        <h2>Are you looking for a job?</h2>
+
+        <p>I'm looking to start full-time employment again in Dec 2026/Jan 2027.</p>
+
+        <p>That said, if you have an interesting opportunity—let's chat! I'm selectively looking for consulting or part-time projects to work on through 2026. Or if you think a role will be available for me in Q1 of next year, I'm happy to start the conversation early.</p>
+
+        <p><strong>My preferences:</strong></p>
+        <ul class="about-list">
+          <li>NY-based or remote</li>
+          <li>I like being an IC, but I'd be open to management if the need is there.</li>
+          <li>Series C onwards</li>
+          <li>Industry agnostic. I have a slight preference for consumer, but I did spend 4+ years working on infra, so I'm open.</li>
+        </ul>
+
+        <p>People are the most important thing. I would love to work again with people I've worked with previously.</p>
+
+        <p>Core values I look for in a team culture: integrity, ownership, kindness, customer-focus, creativity.</p>
+
+        <p><strong>Consulting/Part-time Projects I can help with:</strong></p>
+        <ul class="about-list">
+          <li>User research to answer specific product questions or develop an ICP/buyer persona</li>
+          <li>Roadmap development</li>
+          <li>E2E product or feature development (taking a fuzzy idea to something built and deployed)</li>
+          <li>Understanding the role of product in your company. If you're in the transition from "founders doing to product" to "now we need a dedicated PM," I can help clarify the functions, and provide advice on whether you actually <em>need</em> to hire.</li>
+        </ul>
+      </section>
+
+      <!-- =============================================
+           OKAY ENOUGH ABOUT TECH
+           ============================================= -->
+      <section>
+        <h2>Okay enough about tech, tell me some other interesting things</h2>
+
+        <ul class="about-list">
+          <li>I'm a writer, and have been publishing fiction since 2009.
+            <ul class="about-list">
+              <li>I have a published short story collection, and you can read a lot of my <a href="https://isabelyap.com" target="_blank">fiction for free online</a>. I also write poetry. I'm currently working on a novel.</li>
+              <li>I also teach writing through workshops, lectures, and school visits. I have a <a href="https://isabelyap.com" target="_blank">free monthly newsletter</a> about my writing practice and advice.</li>
+            </ul>
+          </li>
+          <li>If you're curious about how/what I write, some representative works:
+            <ul class="about-list">
+              <li><a href="#" title="Add story URL here">Near-future sci-fi about synthetic foods</a> (or <a href="#" title="Add LeVar Burton link here">listen to LeVar Burton read it</a>)</li>
+              <li><a href="#" title="Add story URL here">Red Riding Hood and Beauty falling in love</a></li>
+              <li><a href="#" title="Add story URL here">Underworld goddess x the Philippines' bloody drug war</a></li>
+            </ul>
+          </li>
+          <li>I love reading. Visiting a bookstore is one of my favorite ways to spend a weekend afternoon.</li>
+          <li>I love music. Playlists I've made include greasy songs to drive to, guitar cry, k-pop, OPM, and motown.
+            <ul class="about-list">
+              <li>I play the ukulele and sing.</li>
+              <li>At HBS I sang alto for our acapella group, HOTS.</li>
+              <li>I learned piano growing up but am severely out of practice.</li>
+            </ul>
+          </li>
+          <li>I studied Japanese from sixth grade through college, including a language-intensive semester in Tokyo as part of my Japanese Studies minor. I've passed the JLPT N2. I'm rusty, but conversational. (I've forgotten most of my kanji though.)
+            <ul class="about-list">
+              <li>I've traveled different parts of Japan, including chasing summer festivals in Northern Tohoku, farming in rural Kyoto, and hiking the Kumano Kodo.</li>
+              <li>This fall, I'll be walking the Shikoku Henro.</li>
+            </ul>
+          </li>
+          <li>I love learning things. As a kid I learned paper quilling, crocheting, knitting, juggling, solving the Rubik's cube one specific way, and painting with oils/acrylics/pastels.
+            <ul class="about-list">
+              <li>Things I want to learn someday: philosophy, more foreign languages (improve my Japanese, learn Korean and Spanish), watercolors, guitar, drawing, music theory, how to get better at learning.</li>
+            </ul>
+          </li>
+          <li>I'm bad at basically all sports. But one of my sabbatical goals is to develop healthier habits, including consuming more protein (I say this to be funny, but I'm not joking).</li>
+          <li>I have a meditation practice, and regularly take classes with Elizabeth Pyjov at Happiness Sangha.</li>
+          <li>I identify as queer (bi/aroacespec). I use she/her pronouns, though I feel some ambivalence about them.</li>
+          <li>I suspect part of my comfort in tech comes from being a nerd. I like playing videogames and watching anime.
+            <ul class="about-list">
+              <li>Everyone should watch Nippon Sangoku.</li>
+              <li>Everyone should play Blue Prince.</li>
+            </ul>
+          </li>
+          <li>Other hobbies: walking around the city, visiting museums, looking at beautiful things in nature, having good conversations with friends.</li>
+          <li>I am afraid of the sound of birds' wings flapping.</li>
+        </ul>
+      </section>
+
+      <!-- FOOTER -->
+      <footer>
+        <p>© 2026 Isabel Yap · built on sabbatical · <a href="https://www.linkedin.com/in/isabelyap" target="_blank">LinkedIn</a></p>
+        <!-- Add your footer note here -->
+      </footer>
+
+    </div>
+  </body>
+</html>
