@@ -306,7 +306,7 @@
            ============================================= -->
       <nav>
         <a href="/" class="site-name">isabbatical</a>
-        <a href="#">about</a>
+        <a href="about.html">about</a>
         <a href="#">essays</a>
         <a href="#">sidequests</a>
       </nav>
@@ -348,6 +348,7 @@
         <p>
           I am currently based in New York City.
         </p>
+        <p>Want the longer version? <a href="about.html">It's here</a>.</p>
       </section>
 
       <!-- =============================================
@@ -405,15 +406,11 @@
           I'm thinking of sending an infrequent newsletter of sabbatical
           updates (like, every 2-3 weeks). If that sounds appealing, sign up here:
         </p>
-        <form name="newsletter" method="POST" netlify>
-          <input type="hidden" name="form-name" value="newsletter" />
+        <form action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="2af6c0e7-e9b7-43c0-9610-50f3ec089034" />
+          <input type="hidden" name="subject" value="isabbatical newsletter signup" />
           <div class="form-row">
-            <input
-              type="email"
-              name="email"
-              placeholder="your@email.com"
-              required
-            />
+            <input type="email" name="email" placeholder="your@email.com" required />
             <button type="submit">Sign up</button>
           </div>
         </form>
@@ -426,14 +423,15 @@
       <section>
         <h2>Say hello</h2>
         <p>Want to chat about any of the above? Send me a note.</p>
-        <form name="contact" method="POST" netlify>
-          <input type="hidden" name="form-name" value="contact" />
+        <form action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="824da7b7-81d4-4960-9d5c-2d750880bfb1" />
+          <input type="hidden" name="subject" value="isabbatical contact" />
           <div class="form-row">
-            <input type="text"  name="name"    placeholder="Your name"        required />
-            <input type="email" name="email"   placeholder="your@email.com"   required />
+            <input type="text" name="name" placeholder="Your name" required />
+            <input type="email" name="email" placeholder="your@email.com" required />
           </div>
           <div class="form-row">
-            <textarea           name="message" placeholder="What's on your mind?" required></textarea>
+            <textarea name="message" placeholder="What's on your mind?" required></textarea>
           </div>
           <button type="submit">Send</button>
         </form>
