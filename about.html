@@ -93,18 +93,22 @@
          ============================================= */
       .profile-photo {
         display: block;
-        width: 120px;
-        height: 120px;
+        width: 100px;
+        height: 100px;
         border-radius: 50%;
+        flex-shrink: 0;
         object-fit: cover;
-        margin-bottom: 2rem;
+        margin-bottom: 1rem;
       }
 
       /* =============================================
          PAGE HEADER
          ============================================= */
       .page-header {
-        margin-bottom: 3rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1rem;
       }
 
       .page-header h1 {
@@ -120,8 +124,8 @@
          SECTIONS
          ============================================= */
       section {
-        margin-bottom: 3rem;
-        padding-top: 2.5rem;
+        margin-bottom: 2rem;
+        padding-top: 2rem;
         border-top: 1px solid var(--border);
       }
 
@@ -136,7 +140,7 @@
       }
 
       section p {
-        font-size: 0.95rem;
+        font-size: 0.85rem;
         color: var(--ink);
         margin-bottom: 0.85rem;
       }
@@ -166,7 +170,7 @@
       }
 
       .about-list li {
-        font-size: 0.95rem;
+        font-size: 0.85rem;
         color: var(--ink);
         padding: 0.2rem 0;
         padding-left: 1.25rem;
@@ -174,7 +178,7 @@
       }
 
       .about-list li::before {
-        content: '›';
+        content: '▸';
         position: absolute;
         left: 0;
         color: var(--ink-light);
@@ -185,10 +189,11 @@
       .about-list .about-list {
         margin-top: 0.25rem;
         margin-left: 0.5rem;
+        margin-bottom: 0.25rem;
       }
 
       .about-list .about-list li::before {
-        content: '–';
+        content: '>';
         font-size: 0.8rem;
       }
 
@@ -262,13 +267,13 @@
 
       <!-- PAGE HEADER + PHOTO -->
       <header class="page-header">
-        <!-- Cloudinary URL uses w_200,h_200,c_fill,g_face to auto-crop to your face -->
+        <h1>About Me</h1>
+                <!-- Cloudinary URL uses w_200,h_200,c_fill,g_face to auto-crop to your face -->
         <img
           src="https://res.cloudinary.com/dl1tx7ln5/image/upload/w_200,h_200,c_fill,g_face/v1783706121/2024-small-headshot_copy_nxwlpa.jpg"
           alt="Isabel Yap"
           class="profile-photo"
         />
-        <h1>About Me</h1>
       </header>
 
       <!-- =============================================
@@ -295,7 +300,7 @@
           <li>To meet people outside of the Silicon Valley Bubble.</li>
         </ul>
 
-        <p>I got rejected. I tried again a year later, and was accepted into Harvard Business School for fall 2018. HBS was great. I had a better time than expected. If you want to know more about my experience there, <a href="#" title="Add essay URL here">here's an essay on why I chose an MBA over an MFA in Creative Writing</a>.</p>
+        <p>I got rejected. I tried again a year later, and was accepted into Harvard Business School for fall 2018. HBS was great. I had a better time than expected. If you want to know more about my experience there, <a href="https://lithub.com/mfa-vs-mba-finding-unlikely-literary-inspiration-at-harvard-business-school/" target="_blank">here's an essay on why I chose an MBA over an MFA in Creative Writing</a>.</p>
 
         <p>In summer 2019 I interned at Duolingo in Pittsburgh, where I worked on Monetization, specifically the question: "Why do people upgrade to Plus?" One of my features (Hard Mode) drove +$2.5k in daily revenue during the experiment phase. I enjoyed Duo's design-forward, experiment-driven culture, and applying the knowledge from my mobile game days.</p>
 
@@ -375,22 +380,22 @@
         <ul class="about-list">
           <li>I'm a writer, and have been publishing fiction since 2009.
             <ul class="about-list">
-              <li>I have a published short story collection, and you can read a lot of my <a href="https://isabelyap.com" target="_blank">fiction for free online</a>. I also write poetry. I'm currently working on a novel.</li>
-              <li>I also teach writing through workshops, lectures, and school visits. I have a <a href="https://isabelyap.com" target="_blank">free monthly newsletter</a> about my writing practice and advice.</li>
+              <li>I have a published short story collection, and you can read a lot of my <a href="https://isabelyap.com/fiction" target="_blank">fiction for free online</a>. I also write poetry. I'm currently working on a novel.</li>
+              <li>I also teach writing through workshops, lectures, and school visits. I have a <a href="https://visyap.mymagic.page/" target="_blank">free monthly newsletter</a> about my writing practice and advice.</li>
             </ul>
           </li>
           <li>If you're curious about how/what I write, some representative works:
             <ul class="about-list">
-              <li><a href="#" title="Add story URL here">Near-future sci-fi about synthetic foods</a> (or <a href="#" title="Add LeVar Burton link here">listen to LeVar Burton read it</a>)</li>
-              <li><a href="#" title="Add story URL here">Red Riding Hood and Beauty falling in love</a></li>
-              <li><a href="#" title="Add story URL here">Underworld goddess x the Philippines' bloody drug war</a></li>
+              <li><a href="http://www.tor.com/2015/08/12/milagroso-isabel-yap/" target="_blank">Near-future sci-fi about synthetic foods</a> (or <a href="https://podcasts.apple.com/us/podcast/milagroso-by-isabel-yap/id1244649384?i=1000528691472" target="_blank">listen to LeVar Burton read it</a>)</li>
+              <li><a href="https://www.lightspeedmagazine.com/fiction/windrose-in-scarlet/" target="_blank">Red Riding Hood and Beauty falling in love</a></li>
+              <li><a href="http://strangehorizons.com/fiction/asphalt-river-mother-child/" target="_blank">Underworld goddess x the Philippines' bloody drug war</a></li>
             </ul>
           </li>
           <li>I love reading. Visiting a bookstore is one of my favorite ways to spend a weekend afternoon.</li>
           <li>I love music. Playlists I've made include greasy songs to drive to, guitar cry, k-pop, OPM, and motown.
             <ul class="about-list">
-              <li>I play the ukulele and sing.</li>
-              <li>At HBS I sang alto for our acapella group, HOTS.</li>
+              <li>I <a href="https://www.youtube.com/@ukuleleisa1990/videos" target="_blank">play the ukulele</a> and sing.</li>
+              <li>At HBS I <a href="https://www.youtube.com/watch?v=Xvo91OyoXDs" target="_blank">sang alto</a> for our acapella group, HOTS.</li>
               <li>I learned piano growing up but am severely out of practice.</li>
             </ul>
           </li>
@@ -421,8 +426,8 @@
 
       <!-- FOOTER -->
       <footer>
-        <p>© 2026 Isabel Yap · built on sabbatical · <a href="https://www.linkedin.com/in/isabelyap" target="_blank">LinkedIn</a></p>
-        <!-- Add your footer note here -->
+        <p>© 2026 Isabel Yap · built on sabbatical · <a href="https://www.linkedin.com/in/victoriaisabelyap" target="_blank">LinkedIn</a></p>
+        <p class="footer-note">This website is made with the assistance of LLMs, but all the content is written by hand. I do not use AI in any part of my creative writing.</p>
       </footer>
 
     </div>
